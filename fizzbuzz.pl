@@ -5,17 +5,17 @@
 # ただし、3と5両方の倍数の場合は数字の代わりに「FIzzBuzz」、7と11の両方の倍数の場合は数字の代わりに 「セブンイレブン」、3と5と7と11全ての倍数の場合は「いい気分」と表示してください。
 # その他の倍数の組み合わせ（3と7の倍数の21、5と11の倍数の110等）の場合は数字をそのまま表示してください。
 
-my $check = 0;
+my $status = 0;
 my @list = (3,5,7,11);
 my @msg = ("","Fizz","Buzz","FizzBuzz","セブン","","","","セブンイレブン",
 "","","","","","","いい気分");
 
-for(my $i=0;$i<2000;$i++){
-  $check = 0b0000;#各数字の倍数かを管理
+for(my $num=0;$num<2000;$num++){
+  $status = 0b0000;#各数字の倍数かを管理
   foreach my $j(0 .. $#list){
-  	if($i % $list[$j] == 0){
- 		  $check += 1 << $j;
+  	if($num % $list[$j] == 0){
+ 		  $status += 1 << $j;
     }
   }
-  print $msg[$check] ? $msg[$check]:$i,"\n"
+  print $msg[$status] ? $msg[$status]:$num,"\n"
 }
